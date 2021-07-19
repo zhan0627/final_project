@@ -25,7 +25,7 @@
         android:layout_marginTop="32dp"
         android:text="OCTranspo Bus Route App"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/textView" />
+        app:layout_constraintTop_toTopOf="@id/textview" />
 
     <Button
         android:id="@+id/button2"

@@ -18,10 +18,10 @@ public class MainActivity extends AppCompatActivity {
         Button button3 = findViewById(R.id.button3);
         Button button4 = findViewById(R.id.button4);
 
-        button1.setOnClickListener(click -> {});
+        /*button1.setOnClickListener(click -> {});
         button2.setOnClickListener(click -> {});
         button3.setOnClickListener(click -> {});
-        button4.setOnClickListener(click -> {});
+        button4.setOnClickListener(click -> {});*/
 
 
     }
