@@ -1,27 +1,15 @@
-package algonquin.cst2335.jacesandroidlabs;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+package algonquin.cst2335.finalproject;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Switch;
 
-import java.io.File;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.FileOutputStream;
 
 public class MainActivity extends AppCompatActivity {

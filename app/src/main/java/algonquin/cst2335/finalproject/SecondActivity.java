@@ -1,6 +1,4 @@
-package algonquin.cst2335.jacesandroidlabs;
-
-import androidx.appcompat.app.AppCompatActivity;
+package algonquin.cst2335.finalproject;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -13,9 +11,10 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
