@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         loginBtn.setOnClickListener( clk -> {
             et = findViewById(R.id.inputEditText);
-            Intent nextPage = new Intent(MainActivity.this, algonquin.cst2335.jacesandroidlabs.SecondActivity.class);
+            Intent nextPage = new Intent(MainActivity.this, algonquin.cst2335.finalproject.SecondActivity.class);
 
             nextPage.putExtra("EmailAddress", et.getText().toString());
             nextPage.putExtra("SomeInfo", "Welcome!");
