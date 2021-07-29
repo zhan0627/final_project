@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
             Intent thirdPage = new Intent(MainActivity.this, algonquin.cst2335.finalproject.ThirdActivity.class );
 
             nextPage.putExtra("EmailAddress", et.getText().toString());
-            nextPage.putExtra("SomeInfo", "Welcome!");
-            nextPage.putExtra("MyFloat", 3.14f);
 
             startActivityForResult(nextPage, 900);
         });

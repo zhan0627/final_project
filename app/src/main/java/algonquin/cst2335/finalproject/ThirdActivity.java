@@ -188,9 +188,8 @@ public class MainActivity extends AppCompatActivity {
             try {
 
 
-                String stringURL = "http://www.omdbapi.com/?"
-                        + URLEncoder.encode (cityName, "UTF-8")
-                        + "apikey=6c9862c2";
+                String stringURL = "http://www.omdbapi.com/?apikey=6c9862c2&r=xml&t="
+                        + URLEncoder.encode (cityName, "UTF-8");
 
 
                 URL url = new URL(stringURL);
