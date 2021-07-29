@@ -73,7 +73,7 @@
             android:id="@+id/releaseDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="release date goes here"
+            android:hint="runtime goes here"
             app:layout_constraintTop_toBottomOf="@+id/ratings"
             tools:layout_editor_absoluteX="40dp" />
 
