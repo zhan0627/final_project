@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawer_layout">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/myToolbar"/>
+
+        <TextView
+            android:id="@+id/cityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:text="type in the name of the city:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/forecastButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="GET FORECAST"
+            app:layout_constraintEnd_toEndOf="@+id/cityTextField"
+            app:layout_constraintStart_toStartOf="@+id/cityTextField"
+            app:layout_constraintTop_toBottomOf="@+id/cityTextField" />
+
+        <EditText
+            android:id="@+id/cityTextField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:ems="10"
+            android:hint="Type city name here"
+            app:layout_constraintEnd_toEndOf="@+id/cityText"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/cityText"
+            app:layout_constraintTop_toBottomOf="@+id/cityText" />
+
+        <TextView
+            android:id="@+id/temp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Temp goes here"
+            app:layout_constraintTop_toBottomOf="@+id/forecastButton"
+            tools:layout_editor_absoluteX="40dp" />
+
+        <TextView
+            android:id="@+id/maxTemp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="max Temp goes here"
+            app:layout_constraintTop_toBottomOf="@+id/temp"
+            tools:layout_editor_absoluteX="40dp" />
+
+        <TextView
+            android:id="@+id/minTemp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="min Temp goes here"
+            app:layout_constraintTop_toBottomOf="@+id/maxTemp"
+            tools:layout_editor_absoluteX="40dp" />
+
+        <TextView
+            android:id="@+id/humidity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Humidity goes here"
+            app:layout_constraintTop_toBottomOf="@+id/minTemp"
+            tools:layout_editor_absoluteX="40dp" />
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/humidity"
+            app:srcCompat="@drawable/day" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="description goes here"
+            app:layout_constraintTop_toBottomOf="@+id/icon"
+            tools:layout_editor_absoluteX="40dp" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/popout_menu"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/my_drawer_menu"
+        app:headerLayout="@layout/popout_header"
+        />
+
+</androidx.drawerlayout.widget.DrawerLayout>
