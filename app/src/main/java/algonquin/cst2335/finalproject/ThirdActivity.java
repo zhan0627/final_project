@@ -47,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
 
     /**The Button the user clicks to login*/
     private Button forecastBtn ;
-    double currentTemp;
-    double minTemp;
-    double maxTemp;
-    int humidity;
-    String description;
+    double year;
+    double releaseDate;
+    double ratings;
+    int actors;
+    String plot;
     String iconName;
 
     float txtSize = 14.0f;
@@ -65,19 +65,19 @@ public class MainActivity extends AppCompatActivity {
             case R.id.nav_views:
                 isVisible = ! isVisible;
                 // forecastBtn.setVisibility(isVisible?View.VISIBLE:View.INVISIBLE);
-                TextView tv = findViewById(R.id.temp);
+                TextView tv = findViewById(R.id.year);
                 tv.setVisibility(View.INVISIBLE);
 
-                tv = findViewById(R.id.minTemp);
+                tv = findViewById(R.id.releaseDate);
                 tv.setVisibility(View.INVISIBLE);
 
-                tv = findViewById(R.id.maxTemp);
+                tv = findViewById(R.id.ratings);
                 tv.setVisibility(View.INVISIBLE);
 
-                tv = findViewById(R.id.humidity);
+                tv = findViewById(R.id.actors);
                 tv.setVisibility(View.INVISIBLE);
 
-                tv = findViewById(R.id.description);
+                tv = findViewById(R.id.plot);
                 tv.setVisibility(View.INVISIBLE);
 
                 iv.setVisibility(View.INVISIBLE);
@@ -87,19 +87,19 @@ public class MainActivity extends AppCompatActivity {
             case R.id.increase:
             case R.id.nav_increase:
                 txtSize++;
-                TextView text = findViewById(R.id.temp);
+                TextView text = findViewById(R.id.year);
                 text.setTextSize(txtSize);
 
-                text = findViewById(R.id.minTemp);
+                text = findViewById(R.id.releaseDate);
                 text.setTextSize(txtSize);
 
-                text = findViewById(R.id.maxTemp);
+                text = findViewById(R.id.ratings);
                 text.setTextSize(txtSize);
 
-                text = findViewById(R.id.humidity);
+                text = findViewById(R.id.actors);
                 text.setTextSize(txtSize);
 
-                text = findViewById(R.id.description);
+                text = findViewById(R.id.plot);
                 text.setTextSize(txtSize);
                 iv.setVisibility(View.INVISIBLE);
 
@@ -108,19 +108,19 @@ public class MainActivity extends AppCompatActivity {
             case R.id.decrease:
             case R.id.nav_decrease:
                 txtSize = Float.max(txtSize-1, 5);
-                TextView tV = findViewById(R.id.temp);
+                TextView tV = findViewById(R.id.year);
                 tV.setTextSize(txtSize);
 
-                tV = findViewById(R.id.minTemp);
+                tV = findViewById(R.id.releaseDate);
                 tV.setTextSize(txtSize);
 
-                tV = findViewById(R.id.maxTemp);
+                tV = findViewById(R.id.ratings);
                 tV.setTextSize(txtSize);
 
-                tV = findViewById(R.id.humidity);
+                tV = findViewById(R.id.actors);
                 tV.setTextSize(txtSize);
 
-                tV = findViewById(R.id.description);
+                tV = findViewById(R.id.plot);
                 tV.setTextSize(txtSize);
                 iv.setVisibility(View.INVISIBLE);
 
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        cityField = findViewById(R.id.cityTextField);
+        cityField = findViewById(R.id.movieTextField);
         forecastBtn = findViewById(R.id.forecastButton);
 
         NavigationView popout_menu = findViewById(R.id.popout_menu);
@@ -188,9 +188,9 @@ public class MainActivity extends AppCompatActivity {
             try {
 
 
-                String stringURL = "https://api.openweathermap.org/data/2.5/weather?q="
+                String stringURL = "http://www.omdbapi.com/?"
                         + URLEncoder.encode (cityName, "UTF-8")
-                        + "&appid=7e943c97096a9784391a981c4d878b22&units=metric";
+                        + "apikey=6c9862c2";
 
 
                 URL url = new URL(stringURL);
@@ -205,17 +205,17 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject theDocument = new JSONObject( text );
                 JSONObject mainObj = theDocument.getJSONObject("main");
 
-                currentTemp = mainObj.getDouble("temp");
-                minTemp = mainObj.getDouble ("temp_min");
-                maxTemp = mainObj.getDouble ("temp_max");
-                humidity = mainObj.getInt("humidity");
+                year = mainObj.getDouble("year");
+                releaseDate = mainObj.getDouble ("runtime");
+                ratings = mainObj.getDouble ("rated");
+                actors = mainObj.getInt("actors");
 
                 JSONArray weatherArray = theDocument.getJSONArray ( "weather" );
                 JSONObject firstObj = weatherArray.getJSONObject(0);
-                description = firstObj.getString("description");
+                plot = firstObj.getString("plot");
                 iconName = firstObj.getString("icon");
 
-                URL imgUrl = new URL( "https://openweathermap.org/img/w/" + iconName + ".png" );
+                URL imgUrl = new URL( "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300" + iconName + ".jpg" );
                 HttpURLConnection connection = (HttpURLConnection) imgUrl.openConnection();
                 connection.connect();
                 int responseCode = connection.getResponseCode();
@@ -227,24 +227,24 @@ public class MainActivity extends AppCompatActivity {
                 }
                 iv = findViewById(R.id.icon);
                 runOnUiThread( (  )  -> {
-                    TextView tv = findViewById(R.id.temp);
-                    tv.setText("The current Temperature is " + currentTemp);
+                    TextView tv = findViewById(R.id.year);
+                    tv.setText("The year of release is " + year);
                     tv.setVisibility(View.VISIBLE);
 
-                    tv = findViewById(R.id.minTemp);
-                    tv.setText("The min Temperature is " + minTemp);
+                    tv = findViewById(R.id.releaseDate);
+                    tv.setText("The min runtime is " + releaseDate);
                     tv.setVisibility(View.VISIBLE);
 
-                    tv = findViewById(R.id.maxTemp);
-                    tv.setText("The max Temperature is " + maxTemp);
+                    tv = findViewById(R.id.ratings);
+                    tv.setText("The rating is " + ratings);
                     tv.setVisibility(View.VISIBLE);
 
-                    tv = findViewById(R.id.humidity);
-                    tv.setText("The min Temperature is " + humidity + "%");
+                    tv = findViewById(R.id.actors);
+                    tv.setText("The actors are " + actors);
                     tv.setVisibility(View.VISIBLE);
 
-                    tv = findViewById(R.id.description);
-                    tv.setText(description);
+                    tv = findViewById(R.id.plot);
+                    tv.setText(plot);
                     tv.setVisibility(View.VISIBLE);
                     iv.setImageBitmap(image);
                 });
