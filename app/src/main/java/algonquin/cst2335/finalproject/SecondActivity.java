@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ import java.io.FileOutputStream;
 
 public class SecondActivity extends AppCompatActivity {
     ImageView pict;
+    EditText et;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,17 @@ public class SecondActivity extends AppCompatActivity {
             pict = findViewById(R.id.imageView);
             pict.setImageBitmap( theImage );
         }
+
+        Button loginBtn = findViewById(R.id.button);
+        loginBtn.setOnClickListener( clk -> {
+            et = findViewById(R.id.inputEditText);
+            Intent nextPage = new Intent(SecondActivity.this, algonquin.cst2335.finalproject.ThirdActivity.class);
+
+
+            nextPage.putExtra("EmailAddress", et.getText().toString());
+
+            startActivityForResult(nextPage, 900);
+        });
 
         Float fromMain = fromPrevious.getFloatExtra("MyFloat", 3.14f);
         Boolean t = fromPrevious.getBooleanExtra("IsTrue", false);
