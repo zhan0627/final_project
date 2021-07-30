@@ -51,7 +51,7 @@ public class SecondActivity extends AppCompatActivity {
             Intent nextPage = new Intent(SecondActivity.this, algonquin.cst2335.finalproject.ThirdActivity.class);
 
 
-            nextPage.putExtra("EmailAddress", et.getText().toString());
+            nextPage.putExtra("editTextPhone", et.getText().toString());
 
             startActivityForResult(nextPage, 900);
         });
