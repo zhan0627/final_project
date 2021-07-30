@@ -92,7 +92,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/actors"
-            app:srcCompat="@drawable/day" />
+            app:srcCompat="@drawable/cinema" />
 
         <TextView
             android:id="@+id/plot"
