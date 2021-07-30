@@ -4,17 +4,17 @@
 
     <item
         android:id="@+id/nav_views"
+        android:icon="@drawable/cinema"
         android:title="Clear movie"
-        android:icon="@drawable/clear"
         app:showAsAction="always" />
     <item
         android:id="@+id/nav_increase"
-        android:icon="@drawable/increase"
+        android:icon="@drawable/film"
         android:title="increase Font Size"
         app:showAsAction="always" />
     <item
         android:id="@+id/nav_decrease"
-        android:icon="@drawable/decrease"
+        android:icon="@drawable/clapperboard"
         android:title="decrease Font Size"
         app:showAsAction="always" />
 </menu>

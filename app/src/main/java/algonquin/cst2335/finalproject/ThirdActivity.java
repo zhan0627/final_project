@@ -37,7 +37,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
-public class MainActivity extends AppCompatActivity {
+public class ThirdActivity extends AppCompatActivity {
     ImageView iv ;
     /**Describes the result the variable, passwordText holds what the user typed*/
     private EditText cityField;
@@ -214,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
                 plot = firstObj.getString("plot");
                 iconName = firstObj.getString("icon");
 
-                URL imgUrl = new URL( "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300" + iconName + ".jpg" );
+                URL imgUrl = new URL( "https://m.media-amazon.com/images/M/" + iconName + ".jpg" );
                 HttpURLConnection connection = (HttpURLConnection) imgUrl.openConnection();
                 connection.connect();
                 int responseCode = connection.getResponseCode();
