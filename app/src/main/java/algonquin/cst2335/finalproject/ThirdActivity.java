@@ -1,11 +1,5 @@
 package algonquin.cst2335.finalproject;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -17,6 +11,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -61,7 +61,7 @@ public class ThirdActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId())
         {
-            case R.id.views:
+          //  case R.id.views:
             case R.id.nav_views:
                 isVisible = ! isVisible;
                 // forecastBtn.setVisibility(isVisible?View.VISIBLE:View.INVISIBLE);
@@ -84,7 +84,7 @@ public class ThirdActivity extends AppCompatActivity {
                 cityField.setText("");
                 break;
 
-            case R.id.increase:
+           // case R.id.increase:
             case R.id.nav_increase:
                 txtSize++;
                 TextView text = findViewById(R.id.year);
@@ -105,7 +105,7 @@ public class ThirdActivity extends AppCompatActivity {
 
                 break;
 
-            case R.id.decrease:
+          //  case R.id.decrease:
             case R.id.nav_decrease:
                 txtSize = Float.max(txtSize-1, 5);
                 TextView tV = findViewById(R.id.year);
