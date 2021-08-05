@@ -13,10 +13,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -185,6 +187,17 @@ public class ThirdActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     void runForecast(String cityName)
     {
+        forecastBtn.setOnClickListener((click)-> {
+            String movie = cityField.getText().toString();
+
+            AlertDialog dialog = new AlertDialog.Builder (ThirdActivity.this)
+                    .setTitle ("Box Office Hit")
+                    .setMessage("1 Million views:" + movie )
+                    .setView (new ProgressBar(ThirdActivity.this))
+                    .show();
+
+        });
+
         Executor newThread = Executors.newSingleThreadExecutor();
         newThread.execute(() -> {
 
@@ -263,6 +276,8 @@ public class ThirdActivity extends AppCompatActivity {
                 }
 
                 }
+
+
                 iv = findViewById(R.id.icon);
                 runOnUiThread( (  )  -> {
                     TextView tv = findViewById(R.id.year);
