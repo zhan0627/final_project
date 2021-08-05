@@ -1,9 +1,11 @@
 package algonquin.cst2335.finalproject;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,22 +24,18 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-import java.util.stream.Collectors;
 
 public class ThirdActivity extends AppCompatActivity {
     ImageView iv ;
@@ -49,10 +47,10 @@ public class ThirdActivity extends AppCompatActivity {
 
     /**The Button the user clicks to login*/
     private Button forecastBtn ;
-    double year;
-    double releaseDate;
-    double ratings;
-    int actors;
+    String year;
+    String releaseDate;
+    String ratings;
+    String actors;
     String plot;
     String iconName;
 
@@ -200,24 +198,28 @@ public class ThirdActivity extends AppCompatActivity {
                 URL url = new URL(stringURL);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-
+//put xml parser here:
+                /*
                 String text = (new BufferedReader(
                         new InputStreamReader(in, StandardCharsets.UTF_8)))
                         .lines()
                         .collect(Collectors.joining("\n"));
 
                 JSONObject theDocument = new JSONObject( text );
-                JSONObject mainObj = theDocument.getJSONObject("main");
+                JSONObject year = theDocument.getJSONObject("year");
+                JSONObject releaseDate = theDocument.getJSONObject("runtime");
+                JSONObject ratings = theDocument.getJSONObject("rated");
+                JSONObject actors = theDocument.getJSONObject("actors");
 
-                year = mainObj.getDouble("year");
-                releaseDate = mainObj.getDouble ("runtime");
-                ratings = mainObj.getDouble ("rated");
-                actors = mainObj.getInt("actors");
-
-                JSONArray weatherArray = theDocument.getJSONArray ( "weather" );
-                JSONObject firstObj = weatherArray.getJSONObject(0);
-                plot = firstObj.getString("plot");
-                iconName = firstObj.getString("icon");
+               // JSONArray weatherArray = theDocument.getJSONArray ( "weather" );
+                //JSONObject firstObj = weatherArray.getJSONObject(0);
+                //plot = mainObj.getString("plot");
+               // iconName = mainObj.getString("poster");
+*/
+                XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+                factory.setNamespaceAware(false);
+                XmlPullParser xpp = factory.newPullParser();
+                xpp.setInput( in  , "UTF-8");
 
                 URL imgUrl = new URL( "https://m.media-amazon.com/images/M/" + iconName + ".jpg" );
                 HttpURLConnection connection = (HttpURLConnection) imgUrl.openConnection();
@@ -226,7 +228,39 @@ public class ThirdActivity extends AppCompatActivity {
                 if (responseCode == 200) {
                     image = BitmapFactory.decodeStream(connection.getInputStream());
 
+                while (xpp.next() != XmlPullParser.END_DOCUMENT)
+                {
+                    switch(xpp.getEventType())
+                    {
+                        case XmlPullParser.START_TAG:
+                            if (xpp.getName().equals("year"))
+                            {
+                               year = xpp.getAttributeValue(null, "value");
+                            }
+                            else if (xpp.getName().equals ("Released"))
+                            {
+                                releaseDate = xpp.getAttributeValue(null, "value");
+                            }
+                            else if (xpp.getName().equals ("Runtime"))
+                            {
+                                ratings = xpp.getAttributeValue(null, "value");
+                            }
+                            else if (xpp.getName().equals ("Actors"))
+                            {
+                                actors = xpp.getAttributeValue(null, "value");
+                            }
+                            else if (xpp.getName().equals ("plot"))
+                        {
+                            plot = xpp.getAttributeValue(null, "value");
+                        }
 
+                            break;
+                            case XmlPullParser.END_TAG:
+                                break;
+                                case XmlPullParser.TEXT:
+                                    break;
+                    }
+                }
 
                 }
                 iv = findViewById(R.id.icon);
@@ -256,11 +290,37 @@ public class ThirdActivity extends AppCompatActivity {
 
                 Thread.sleep(10000);
 
-            } catch (IOException | InterruptedException | JSONException mf) {
+            } catch (IOException | InterruptedException | XmlPullParserException mf) {
                 mf.getMessage();
             }
 
         });
+
+        Button loginBtn = findViewById(R.id.button);
+        Log.w("MainActivity", "In onCreate() - Loading Widgets" );
+
+        loginBtn.setOnClickListener( clk -> {
+
+            Intent nextPage = new Intent(ThirdActivity.this, algonquin.cst2335.finalproject.MainActivity.class);
+
+
+            nextPage.putExtra("back", cityField.getText().toString());
+
+            startActivityForResult(nextPage, 900);
+        });
+
+        Button btn = findViewById(R.id.button);
+        Log.w("MainActivity", "In onCreate() - Loading Widgets" );
+
+        TextView line = findViewById(R.id.movieTextField);
+        btn.setOnClickListener( clk -> {
+            Intent sendBack = new Intent ();
+            sendBack.putExtra("Number", line.getText().toString());
+            setResult(200, sendBack);
+
+            finish();
+        });
+
     }
 
     @Override
