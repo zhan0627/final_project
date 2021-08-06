@@ -192,7 +192,7 @@ public class ThirdActivity extends AppCompatActivity {
 
             AlertDialog dialog = new AlertDialog.Builder (ThirdActivity.this)
                     .setTitle ("Box Office Hit")
-                    .setMessage("1 Million views:" + movie )
+                    .setMessage("173 Million views:" + movie )
                     .setView (new ProgressBar(ThirdActivity.this))
                     .show();
 
