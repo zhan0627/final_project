@@ -49,8 +49,8 @@ public class ThirdActivity extends AppCompatActivity {
 
     /**The Button the user clicks to login*/
     private Button forecastBtn ;
-    String year;
-    String releaseDate;
+    String title;
+    String runtime;
     String ratings;
     String actors;
     String plot;
@@ -68,10 +68,10 @@ public class ThirdActivity extends AppCompatActivity {
             case R.id.nav_views:
                 isVisible = ! isVisible;
                 // forecastBtn.setVisibility(isVisible?View.VISIBLE:View.INVISIBLE);
-                TextView tv = findViewById(R.id.year);
+                TextView tv = findViewById(R.id.movie_title);
                 tv.setVisibility(View.INVISIBLE);
 
-                tv = findViewById(R.id.releaseDate);
+                tv = findViewById(R.id.runtime);
                 tv.setVisibility(View.INVISIBLE);
 
                 tv = findViewById(R.id.ratings);
@@ -90,10 +90,10 @@ public class ThirdActivity extends AppCompatActivity {
            // case R.id.increase:
             case R.id.nav_increase:
                 txtSize++;
-                TextView text = findViewById(R.id.year);
+                TextView text = findViewById(R.id.movie_title);
                 text.setTextSize(txtSize);
 
-                text = findViewById(R.id.releaseDate);
+                text = findViewById(R.id.runtime);
                 text.setTextSize(txtSize);
 
                 text = findViewById(R.id.ratings);
@@ -111,10 +111,10 @@ public class ThirdActivity extends AppCompatActivity {
           //  case R.id.decrease:
             case R.id.nav_decrease:
                 txtSize = Float.max(txtSize-1, 5);
-                TextView tV = findViewById(R.id.year);
+                TextView tV = findViewById(R.id.movie_title);
                 tV.setTextSize(txtSize);
 
-                tV = findViewById(R.id.releaseDate);
+                tV = findViewById(R.id.runtime);
                 tV.setTextSize(txtSize);
 
                 tV = findViewById(R.id.ratings);
@@ -246,15 +246,15 @@ public class ThirdActivity extends AppCompatActivity {
                     switch(xpp.getEventType())
                     {
                         case XmlPullParser.START_TAG:
-                            if (xpp.getName().equals("year"))
+                            if (xpp.getName().equals("Title"))
                             {
-                               year = xpp.getAttributeValue(null, "value");
-                            }
-                            else if (xpp.getName().equals ("Released"))
-                            {
-                                releaseDate = xpp.getAttributeValue(null, "value");
+                               title = xpp.getAttributeValue(null, "value");
                             }
                             else if (xpp.getName().equals ("Runtime"))
+                            {
+                                runtime = xpp.getAttributeValue(null, "value");
+                            }
+                            else if (xpp.getName().equals ("Ratings"))
                             {
                                 ratings = xpp.getAttributeValue(null, "value");
                             }
@@ -280,12 +280,12 @@ public class ThirdActivity extends AppCompatActivity {
 
                 iv = findViewById(R.id.icon);
                 runOnUiThread( (  )  -> {
-                    TextView tv = findViewById(R.id.year);
-                    tv.setText("The year of release is " + year);
+                    TextView tv = findViewById(R.id.movie_title);
+                    tv.setText("The movie title is " + title);
                     tv.setVisibility(View.VISIBLE);
 
-                    tv = findViewById(R.id.releaseDate);
-                    tv.setText("The min runtime is " + releaseDate);
+                    tv = findViewById(R.id.runtime);
+                    tv.setText("The min runtime is " + runtime);
                     tv.setVisibility(View.VISIBLE);
 
                     tv = findViewById(R.id.ratings);
@@ -299,6 +299,7 @@ public class ThirdActivity extends AppCompatActivity {
                     tv = findViewById(R.id.plot);
                     tv.setText(plot);
                     tv.setVisibility(View.VISIBLE);
+
                     iv.setImageBitmap(image);
                 });
 
@@ -311,7 +312,7 @@ public class ThirdActivity extends AppCompatActivity {
 
         });
 
-        Button loginBtn = findViewById(R.id.button);
+        Button loginBtn = findViewById(R.id.backbutton);
         Log.w("MainActivity", "In onCreate() - Loading Widgets" );
 
         loginBtn.setOnClickListener( clk -> {
@@ -324,13 +325,13 @@ public class ThirdActivity extends AppCompatActivity {
             startActivityForResult(nextPage, 900);
         });
 
-        Button btn = findViewById(R.id.button);
+        Button btn = findViewById(R.id.continuebutton);
         Log.w("MainActivity", "In onCreate() - Loading Widgets" );
 
         TextView line = findViewById(R.id.movieTextField);
         btn.setOnClickListener( clk -> {
             Intent sendBack = new Intent ();
-            sendBack.putExtra("Number", line.getText().toString());
+            sendBack.putExtra("continue", line.getText().toString());
             setResult(200, sendBack);
 
             finish();
