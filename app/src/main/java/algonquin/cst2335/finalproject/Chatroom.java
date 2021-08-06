@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class ChatRoom<MyChatAdapter> extends AppCompatActivity {
+class ChatRoom<MyChatAdapter> extends AppCompatActivity {
 
     MyChatAdapter adt;
     ArrayList <ChatMessage> messages = new ArrayList <>();

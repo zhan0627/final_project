@@ -2,7 +2,6 @@ package algonquin.cst2335.finalproject;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -204,68 +203,39 @@ public class ThirdActivity extends AppCompatActivity {
             try {
 
 
-                String stringURL = "http://www.omdbapi.com/?apikey=6c9862c2&r=xml&t="
+                String stringURL = "https://www.omdbapi.com/?apikey=6c9862c2&r=xml&t="
                         + URLEncoder.encode (cityName, "UTF-8");
 
 
                 URL url = new URL(stringURL);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-//put xml parser here:
-                /*
-                String text = (new BufferedReader(
-                        new InputStreamReader(in, StandardCharsets.UTF_8)))
-                        .lines()
-                        .collect(Collectors.joining("\n"));
 
-                JSONObject theDocument = new JSONObject( text );
-                JSONObject year = theDocument.getJSONObject("year");
-                JSONObject releaseDate = theDocument.getJSONObject("runtime");
-                JSONObject ratings = theDocument.getJSONObject("rated");
-                JSONObject actors = theDocument.getJSONObject("actors");
-
-               // JSONArray weatherArray = theDocument.getJSONArray ( "weather" );
-                //JSONObject firstObj = weatherArray.getJSONObject(0);
-                //plot = mainObj.getString("plot");
-               // iconName = mainObj.getString("poster");
-*/
                 XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
                 factory.setNamespaceAware(false);
                 XmlPullParser xpp = factory.newPullParser();
                 xpp.setInput( in  , "UTF-8");
-
+/*
                 URL imgUrl = new URL( "https://m.media-amazon.com/images/M/" + iconName + ".jpg" );
                 HttpURLConnection connection = (HttpURLConnection) imgUrl.openConnection();
                 connection.connect();
                 int responseCode = connection.getResponseCode();
                 if (responseCode == 200) {
                     image = BitmapFactory.decodeStream(connection.getInputStream());
-
+*/
                 while (xpp.next() != XmlPullParser.END_DOCUMENT)
                 {
                     switch(xpp.getEventType())
                     {
                         case XmlPullParser.START_TAG:
-                            if (xpp.getName().equals("Title"))
+                            if (xpp.getName().equals("Movie"))
                             {
-                               title = xpp.getAttributeValue(null, "value");
+                               title = xpp.getAttributeValue(null, "title");
+                               runtime = xpp.getAttributeValue(null, "runtime");
+                               actors = xpp.getAttributeValue(null, "actors");
+                               plot = xpp.getAttributeValue(null, "plot");
+                               ratings = xpp.getAttributeValue(null, "rated");
                             }
-                            else if (xpp.getName().equals ("Runtime"))
-                            {
-                                runtime = xpp.getAttributeValue(null, "value");
-                            }
-                            else if (xpp.getName().equals ("Ratings"))
-                            {
-                                ratings = xpp.getAttributeValue(null, "value");
-                            }
-                            else if (xpp.getName().equals ("Actors"))
-                            {
-                                actors = xpp.getAttributeValue(null, "value");
-                            }
-                            else if (xpp.getName().equals ("plot"))
-                        {
-                            plot = xpp.getAttributeValue(null, "value");
-                        }
 
                             break;
                             case XmlPullParser.END_TAG:
@@ -275,7 +245,7 @@ public class ThirdActivity extends AppCompatActivity {
                     }
                 }
 
-                }
+
 
 
                 iv = findViewById(R.id.icon);
