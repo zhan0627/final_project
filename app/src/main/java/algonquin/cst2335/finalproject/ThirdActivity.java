@@ -40,8 +40,8 @@ import java.util.concurrent.Executors;
 
 public class ThirdActivity extends AppCompatActivity {
     ImageView iv ;
-    /**Describes the result the variable, passwordText holds what the user typed*/
-    private EditText cityField;
+    /**Describes the result the variable, movie holds what the user typed*/
+    private EditText movie;
     Bitmap image = null;
     /**This represents the result of the password complexity check*/
     private TextView textView;
@@ -83,7 +83,7 @@ public class ThirdActivity extends AppCompatActivity {
                 tv.setVisibility(View.INVISIBLE);
 
                 iv.setVisibility(View.INVISIBLE);
-                cityField.setText("");
+                movie.setText("");
                 break;
 
            // case R.id.increase:
@@ -126,7 +126,7 @@ public class ThirdActivity extends AppCompatActivity {
                 tV.setTextSize(txtSize);
                 iv.setVisibility(View.INVISIBLE);
 
-                cityField.setTextSize(txtSize);
+                movie.setTextSize(txtSize);
                 textView.setTextSize(txtSize);
                 forecastBtn.setTextSize(txtSize);
                 break;
@@ -161,7 +161,7 @@ public class ThirdActivity extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        cityField = findViewById(R.id.movieTextField);
+        movie = findViewById(R.id.movieTextField);
         forecastBtn = findViewById(R.id.forecastButton);
 
         NavigationView popout_menu = findViewById(R.id.popout_menu);
@@ -174,7 +174,7 @@ public class ThirdActivity extends AppCompatActivity {
         });
 
         forecastBtn.setOnClickListener(click -> {
-            String cityName = cityField.getText().toString();
+            String cityName = movie.getText().toString();
             myToolbar.getMenu().add(1,5,10,cityName).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
             runForecast(cityName);
 
@@ -187,11 +187,11 @@ public class ThirdActivity extends AppCompatActivity {
     void runForecast(String cityName)
     {
         forecastBtn.setOnClickListener((click)-> {
-            String movie = cityField.getText().toString();
+            String movietime = movie.getText().toString();
 
             AlertDialog dialog = new AlertDialog.Builder (ThirdActivity.this)
                     .setTitle ("Box Office Hit")
-                    .setMessage("173 Million views:" + movie )
+                    .setMessage("173 Million views:" + movietime )
                     .setView (new ProgressBar(ThirdActivity.this))
                     .show();
 
@@ -287,10 +287,10 @@ public class ThirdActivity extends AppCompatActivity {
 
         loginBtn.setOnClickListener( clk -> {
 
-            Intent nextPage = new Intent(ThirdActivity.this, algonquin.cst2335.finalproject.MainActivity.class);
+            Intent nextPage = new Intent(ThirdActivity.this, algonquin.cst2335.finalproject.ChatRoom.class);
 
 
-            nextPage.putExtra("back", cityField.getText().toString());
+            nextPage.putExtra("back", movie.getText().toString());
 
             startActivityForResult(nextPage, 900);
         });
@@ -301,7 +301,7 @@ public class ThirdActivity extends AppCompatActivity {
         TextView line = findViewById(R.id.movieTextField);
         btn.setOnClickListener( clk -> {
             Intent sendBack = new Intent ();
-            sendBack.putExtra("continue", line.getText().toString());
+            sendBack.putExtra("continue", movie.getText().toString());
             setResult(200, sendBack);
 
             finish();

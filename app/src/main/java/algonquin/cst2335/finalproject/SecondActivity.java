@@ -20,19 +20,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.File;
 import java.io.FileOutputStream;
 
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivity2 extends AppCompatActivity {
     ImageView pict;
-    EditText et;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        TextView line = findViewById(R.id.messageReceived);
+        EditText line = findViewById(R.id.editTextPhone);
 
         Intent fromPrevious = getIntent();
-        String text = fromPrevious.getStringExtra("Some Info");
+        String text = fromPrevious.getStringExtra("SomeInfo");
         String email = fromPrevious.getStringExtra("EmailAddress");
 
         //check if picture.png exists:
@@ -44,17 +43,6 @@ public class SecondActivity extends AppCompatActivity {
             pict = findViewById(R.id.imageView);
             pict.setImageBitmap( theImage );
         }
-
-        Button loginBtn = findViewById(R.id.button);
-        loginBtn.setOnClickListener( clk -> {
-            et = findViewById(R.id.inputEditText);
-            Intent nextPage = new Intent(SecondActivity.this, algonquin.cst2335.finalproject.ThirdActivity.class);
-
-
-            nextPage.putExtra("editTextPhone", et.getText().toString());
-
-            startActivityForResult(nextPage, 900);
-        });
 
         Float fromMain = fromPrevious.getFloatExtra("MyFloat", 3.14f);
         Boolean t = fromPrevious.getBooleanExtra("IsTrue", false);

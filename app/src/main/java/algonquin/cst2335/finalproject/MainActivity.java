@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private static String TAG = "MainActivity";
     EditText et;
     Bitmap mBitmap;
-    private Object SecondActivity;
+    private Object SecondActivity2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
         loginBtn.setOnClickListener( clk -> {
             et = findViewById(R.id.inputEditText);
-            Intent nextPage = new Intent(MainActivity.this, algonquin.cst2335.finalproject.SecondActivity.class);
-
+            Intent nextPage = new Intent(MainActivity.this, SecondActivity.class);
 
             nextPage.putExtra("EmailAddress", et.getText().toString());
+            nextPage.putExtra("SomeInfo", "Welcome!");
+            nextPage.putExtra("MyFloat", 3.14f);
 
             startActivityForResult(nextPage, 900);
         });
