@@ -185,7 +185,7 @@ class ChatRoom<MyChatAdapter> extends AppCompatActivity {
             itemView.setOnClickListener(click -> {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder( ChatRoom.this );
-                builder.setMessage("Do you want to delete the message: " + rowMessage.getText())
+                builder.setMessage("Do you want to download the movie: " + rowMessage.getText())
                         .setTitle("Question: ")
                         .setPositiveButton("Yes", (dialog, cl)-> {
 
@@ -193,7 +193,7 @@ class ChatRoom<MyChatAdapter> extends AppCompatActivity {
                             ChatMessage removedMessage = messages.get(row);
                             messages.remove(row);
                             adapter.notifyItemRemoved(row);
-                            Snackbar.make(rowMessage, "You deleted message #: " + row, Snackbar.LENGTH_LONG)
+                            Snackbar.make(rowMessage, "You have downloaded a movie: " + row, Snackbar.LENGTH_LONG)
                                     .setAction("Undo", clk -> {
 
 

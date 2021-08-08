@@ -45,10 +45,10 @@ public class ThirdActivity extends AppCompatActivity {
     /**Describes the result the variable, movie holds what the user typed*/
     private EditText movie;
     Bitmap image = null;
-    /**This represents the result of the password complexity check*/
+    /**This represents the result of the complexity*/
     private TextView textView;
 
-    /**The Button the user clicks to login*/
+    /**The Button the user clicks to change user interface*/
     private Button forecastBtn ;
     String title;
     String runtime;
@@ -190,6 +190,7 @@ public class ThirdActivity extends AppCompatActivity {
 
         });
 
+
         Button loginBtn = findViewById(R.id.backbutton);
         Log.w("MainActivity", "In onCreate() - Loading Widgets" );
 
@@ -217,6 +218,7 @@ public class ThirdActivity extends AppCompatActivity {
 
 
     }
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     void runForecast(String cityName)
