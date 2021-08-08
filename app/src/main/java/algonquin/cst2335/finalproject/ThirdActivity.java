@@ -1,5 +1,6 @@
 package algonquin.cst2335.finalproject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -178,8 +180,41 @@ public class ThirdActivity extends AppCompatActivity {
             myToolbar.getMenu().add(1,5,10,cityName).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
             runForecast(cityName);
 
+            Context context = getApplicationContext();
+            CharSequence txt = "Your about to watch a movie" + movie;
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, txt, duration);
+
+            toast.show();
+
 
         });
+
+        Button loginBtn = findViewById(R.id.backbutton);
+        Log.w("MainActivity", "In onCreate() - Loading Widgets" );
+
+        loginBtn.setOnClickListener( clk -> {
+
+            Intent nextPage = new Intent(ThirdActivity.this, algonquin.cst2335.finalproject.ChatRoom.class);
+
+
+            nextPage.putExtra("back", movie.getText().toString());
+
+            startActivityForResult(nextPage, 900);
+        });
+
+        Button btn = findViewById(R.id.continuebutton);
+        Log.w("MainActivity", "In onCreate() - Loading Widgets" );
+
+        TextView line = findViewById(R.id.movieTextField);
+        btn.setOnClickListener( clk -> {
+            Intent sendBack = new Intent ();
+            sendBack.putExtra("continue", movie.getText().toString());
+            setResult(200, sendBack);
+
+            finish();
+        });
+
 
     }
 
@@ -280,31 +315,6 @@ public class ThirdActivity extends AppCompatActivity {
                 mf.getMessage();
             }
 
-        });
-
-        Button loginBtn = findViewById(R.id.backbutton);
-        Log.w("MainActivity", "In onCreate() - Loading Widgets" );
-
-        loginBtn.setOnClickListener( clk -> {
-
-            Intent nextPage = new Intent(ThirdActivity.this, algonquin.cst2335.finalproject.ChatRoom.class);
-
-
-            nextPage.putExtra("back", movie.getText().toString());
-
-            startActivityForResult(nextPage, 900);
-        });
-
-        Button btn = findViewById(R.id.continuebutton);
-        Log.w("MainActivity", "In onCreate() - Loading Widgets" );
-
-        TextView line = findViewById(R.id.movieTextField);
-        btn.setOnClickListener( clk -> {
-            Intent sendBack = new Intent ();
-            sendBack.putExtra("continue", movie.getText().toString());
-            setResult(200, sendBack);
-
-            finish();
         });
 
     }

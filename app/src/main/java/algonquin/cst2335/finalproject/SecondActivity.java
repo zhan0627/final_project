@@ -20,7 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.File;
 import java.io.FileOutputStream;
 
-public class SecondActivity2 extends AppCompatActivity {
+public class SecondActivity extends AppCompatActivity {
     ImageView pict;
 
     @Override
