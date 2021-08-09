@@ -49,17 +49,17 @@ public class ThirdActivity extends AppCompatActivity {
     private TextView textView;
     /**The Button the user clicks to change user interface*/
     private Button forecastBtn ;
-    /**This represents the title of the movie*/
+    /**This represents result of the title of the movie*/
     private String title;
-    /**This represents howlong the runtime is*/
+    /**This represents the results of how long the runtime is*/
     private String runtime;
-    /**This represents the ratings of the movie*/
+    /**This represents result of the ratings of the movie*/
     private String ratings;
-    /**The Button the user clicks to change user interface*/
+    /**This represents the result of the actors in the movie*/
     private String actors;
-    /**The Button the user clicks to change user interface*/
+    /**This represents the result of the plot in the movie */
     private String plot;
-    /**The Button the user clicks to change user interface*/
+    /**This represents the result of the poster of the movie*/
     private String iconName;
 
     float txtSize = 14.0f;
