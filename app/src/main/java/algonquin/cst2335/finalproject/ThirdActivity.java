@@ -2,9 +2,13 @@ package algonquin.cst2335.finalproject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,6 +36,8 @@ import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -64,6 +70,7 @@ public class ThirdActivity extends AppCompatActivity {
 
     float txtSize = 14.0f;
     boolean isVisible = true;
+    ImageView pict;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -300,7 +307,7 @@ public class ThirdActivity extends AppCompatActivity {
         });
 
         Intent fromPrevious = getIntent();
-        String movieText = fromPrevious.getStringExtra("SomeInfo");
+        String movieText = fromPrevious.getStringExtra("back");
 
         movie.setText(movieText);
         Button loginBtn = findViewById(R.id.backbutton);
@@ -328,7 +335,75 @@ public class ThirdActivity extends AppCompatActivity {
             finish();
         });
 
+        String sandbox = getFilesDir().getPath();
+        File file = new File( sandbox + "/Picture.png");
+        if(file.exists())
+        {
+            Bitmap theImage = BitmapFactory.decodeFile(sandbox+"/Picture.png");
+            pict = findViewById(R.id.imageView);
+            pict.setImageBitmap( theImage );
+        }
+        Button callBtn = findViewById(R.id.button2);
+        Log.w("MainActivity", "In onCreate() - Loading Widgets" );
+
+        callBtn.setOnClickListener( clk -> {
+
+            Intent call = new Intent(Intent.ACTION_DIAL);
+            call.setData(Uri.parse("tel:" + line.getText().toString()));
+            //save line.getText().toString() to sharedpreferences
+            SharedPreferences prefs = getSharedPreferences("MyCall", Context.MODE_PRIVATE);
+
+            String called = getFilesDir().getPath();
+            File files = new File( called +"/shared_prefs");
+            if(file.exists())
+            {
+                prefs.getString("MyCall", line.getText().toString());
+                String missCall = prefs.getString("MyCall", line.getText().toString());
+                SharedPreferences.Editor  editor = prefs.edit();
+                editor.putString("MyCall", missCall);
+                editor.apply();
+            }
+            startActivityForResult(call, 1233);
+        });
+
+        Button picBtn = findViewById(R.id.button3);
+        Log.w("MainActivity", "In onCreate() - Loading Widgets" );
+
+        picBtn.setOnClickListener( clk -> {
+
+            Intent pix = new Intent (MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult( pix, 5678 );
+        });
+
     }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        String path = getFilesDir().getPath();
+        if (requestCode == 5678)
+        {
+            if(resultCode == RESULT_OK) {
+                Bitmap thumbnail = data.getParcelableExtra("data");
+                FileOutputStream fOut = null;
+                pict.setImageBitmap(thumbnail);
+
+                try {
+                    fOut = openFileOutput("Picture.png", Context.MODE_PRIVATE);
+                    thumbnail.compress(Bitmap.CompressFormat.PNG, 100, fOut);
+                    fOut.flush();
+                    fOut.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+            Log.w( "MainActivity", "Coming back from previous" );
+        }
+    }
+
+
+
 
     @Override
     protected void onResume() {
