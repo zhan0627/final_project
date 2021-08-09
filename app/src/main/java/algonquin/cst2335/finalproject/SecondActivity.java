@@ -44,9 +44,6 @@ public class SecondActivity extends AppCompatActivity {
             pict.setImageBitmap( theImage );
         }
 
-        Float fromMain = fromPrevious.getFloatExtra("MyFloat", 3.14f);
-        Boolean t = fromPrevious.getBooleanExtra("IsTrue", false);
-
         TextView txt = findViewById(R.id.textView3);
         txt.setText(text);
 

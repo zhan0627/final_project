@@ -42,20 +42,25 @@ import java.util.concurrent.Executors;
 
 public class ThirdActivity extends AppCompatActivity {
     ImageView iv ;
-    /**Describes the result the variable, movie holds what the user typed*/
+    /**Describes the result the variable movie holds */
     private EditText movie;
     Bitmap image = null;
     /**This represents the result of the complexity*/
     private TextView textView;
-
     /**The Button the user clicks to change user interface*/
     private Button forecastBtn ;
-    String title;
-    String runtime;
-    String ratings;
-    String actors;
-    String plot;
-    String iconName;
+    /**This represents the title of the movie*/
+    private String title;
+    /**This represents howlong the runtime is*/
+    private String runtime;
+    /**This represents the ratings of the movie*/
+    private String ratings;
+    /**The Button the user clicks to change user interface*/
+    private String actors;
+    /**The Button the user clicks to change user interface*/
+    private String plot;
+    /**The Button the user clicks to change user interface*/
+    private String iconName;
 
     float txtSize = 14.0f;
     boolean isVisible = true;
@@ -181,7 +186,7 @@ public class ThirdActivity extends AppCompatActivity {
             runForecast(cityName);
 
             Context context = getApplicationContext();
-            CharSequence txt = "Your about to watch a movie" + movie;
+            CharSequence txt = "Your about to watch a movie! ";
             int duration = Toast.LENGTH_LONG;
             Toast toast = Toast.makeText(context, txt, duration);
 
@@ -191,34 +196,9 @@ public class ThirdActivity extends AppCompatActivity {
         });
 
 
-        Button loginBtn = findViewById(R.id.backbutton);
-        Log.w("MainActivity", "In onCreate() - Loading Widgets" );
-
-        loginBtn.setOnClickListener( clk -> {
-
-            Intent nextPage = new Intent(ThirdActivity.this, algonquin.cst2335.finalproject.ChatRoom.class);
-
-
-            nextPage.putExtra("back", movie.getText().toString());
-
-            startActivityForResult(nextPage, 900);
-        });
-
-        Button btn = findViewById(R.id.continuebutton);
-        Log.w("MainActivity", "In onCreate() - Loading Widgets" );
-
-        TextView line = findViewById(R.id.movieTextField);
-        btn.setOnClickListener( clk -> {
-            Intent sendBack = new Intent ();
-            sendBack.putExtra("continue", movie.getText().toString());
-            setResult(200, sendBack);
-
-            finish();
-        });
 
 
     }
-
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     void runForecast(String cityName)
@@ -317,6 +297,35 @@ public class ThirdActivity extends AppCompatActivity {
                 mf.getMessage();
             }
 
+        });
+
+        Intent fromPrevious = getIntent();
+        String movieText = fromPrevious.getStringExtra("SomeInfo");
+
+        movie.setText(movieText);
+        Button loginBtn = findViewById(R.id.backbutton);
+        Log.w("MainActivity", "In onCreate() - Loading Widgets" );
+
+        loginBtn.setOnClickListener( clk -> {
+
+            Intent nextPage = new Intent(ThirdActivity.this, algonquin.cst2335.finalproject.ChatRoom.class);
+
+
+            nextPage.putExtra("back", movie.getText().toString());
+
+            startActivityForResult(nextPage, 900);
+        });
+
+        Button btn = findViewById(R.id.continuebutton);
+        Log.w("MainActivity", "In onCreate() - Loading Widgets" );
+
+        TextView line = findViewById(R.id.movieTextField);
+        btn.setOnClickListener( clk -> {
+            Intent sendBack = new Intent ();
+            sendBack.putExtra("continue", movie.getText().toString());
+            setResult(200, sendBack);
+
+            finish();
         });
 
     }
