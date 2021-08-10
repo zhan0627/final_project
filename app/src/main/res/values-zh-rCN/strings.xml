@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">最终项目</string>
+    <string name="open">打开</string>
+    <string name="close">关闭</string>
+    <string name="group_work">小组作业</string>
+    <string name="function4">足球比赛API</string>
+    <string name="message">信息在这里</string>
+    <string name="save">保留</string>
+    <string name="description">描述</string>
+    <string name="text">文字</string>
+    <string name="send">发送或是收到</string>
+    <string name="database">ID 在这里</string>
+    <string name="visit">访问网址</string>
+    <string name="close_button">关闭</string>
+    <string name="send_btn">发送</string>
+    <string name="header">开头在这里</string>
+    <string name="back">回去</string>
+    <string name="help">帮助</string>
+    <string name="rsslanguage">hk</string>
+    <string name="delete">删除</string>
+    <string name="TitlePage">标题是</string>
+    <string name="database1">数据</string>
+    <string name="time">发表时间是</string>
+    <string name="someInfo">一些信息</string>
+    <string name="instruction">点击文章打开它， fav 是喜欢列表，back 回去按钮是回到主页</string>
+    <string name="SoccerPreferences">足球参数配置</string>
+    <string name="favourite">喜欢</string>
+    <string name="List">列表</string>
+    <string name="Fav">喜欢</string>
+    <string name="BackTo">回到主页</string>
+    <string name="DeleteM">你想要删掉这个信息么</string>
+    <string name="Qe">"问题？ "</string>
+    <string name="No">不要</string>
+    <string name="Y">是</string>
+    <string name="D">从这里删除</string>
+    <string name="DE">你删除了这个信息</string>
+    <string name="Undo">取消</string>
+    <string name="SF">你想要保留到喜欢列表么</string>
+    <string name="Rating">评分</string>
+    <string name="RatingAn">"你给这个软件评分为： "</string>
+    <string name="RatingQu">你想要给这个软件评分么？</string>
+    <string name="RN">读新闻</string>
+    <string name="main">主页</string>
+    <string name="version">软件版本： 1.0</string>
+    <string name="author">张弛</string>
+</resources>

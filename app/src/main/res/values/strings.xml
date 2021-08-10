@@ -1,3 +1,48 @@
 <resources>
-    <string name="app_name">final_project</string>
+    <string name="app_name">Final Project</string>
+    <string name="open" > Open </string>
+    <string name="close" > close </string>
+    <string name="group_work" > Group Work </string>
+    <string name="function4">Soccer games api</string>
+    <string name="message">Message Goes Here</string>
+    <string name="save">save</string>
+    <string name="description">description</string>
+    <string name="text">text</string>
+    <string name="database1">database</string>
+    <string name="database">database id goes here</string>
+    <string name="visit">visit website</string>
+    <string name="close_button">close </string>
+    <string name="send">send receive goes here</string>
+    <string name="send_btn">send</string>
+    <string name="header">Header goes here</string>
+    <string name="back">back</string>
+    <string name="rsslanguage">en</string>
+    <string name="help">help</string>
+    <string name="delete">delete</string>
+    <string name="time">Time Posted</string>
+    <string name="someInfo">Some Info</string>
+    <string name="TitlePage">Title is: </string>
+    <string name="instruction">click the article to open it, fav is the favourite list, the back is back to the main page</string>
+    <string name="SoccerPreferences">SoccerPreferences</string>
+    <string name="favourite">favourite</string>
+    <string name="List">List</string>
+    <string name="Fav">Fav</string>
+    <string name="BackTo">read news</string>
+    <string name="DeleteM">Do you want to delete the message?</string>
+    <string name="Qe">Question?</string>
+    <string name="No">No</string>
+    <string name="Y">Yes</string>
+    <string name="D">Delete from</string>
+    <string name="DE">you deleted message #</string>
+    <string name="Undo">Undo</string>
+    <string name="SF">Do you want to save to favourites ?</string>
+    <string name="Rating">Rating</string>
+    <string name="RatingAn">"You rated the app: "</string>
+    <string name="RatingQu">Do you want to rate the app</string>
+    <string name="RN">read news</string>
+    <string name="main">Main Menu</string>
+    <string name="version">App version: 1.0</string>
+    <string name="author">Chelsea (Chi Zhang)</string>
+
+
 </resources>
