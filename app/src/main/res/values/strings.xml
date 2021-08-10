@@ -1,39 +1,3 @@
 <resources>
     <string name="app_name">Final Project</string>
-    <string name="UserName">UserName</string>
-    <string name="EnterName">EnterName</string>
-    <string name="question">Choose the number of route that you want to show in hte next page
-
-    </string>
-    <string name="selection_type1">selection_type</string>
-    <string name="CheckBox1">Station</string>
-    <string name="CheckBox2">Stop</string>
-    <string name="CheckBox3">CheckBox3</string>
-    <string name="selection_type2">Filter Trancit Agency</string>
-    <string name="CheckBox4">Route informatin</string>
-    <string name="CheckBox5">OC Transpo</string>
-    <string name="CheckBox6">Societe de transport de IOutaouais</string>
-    <string name="start">start</string>
-    <string name="high_score">Contact Us</string>
-    <string name="go_to_main_page">go_to_main_page</string>
-    <string name="ChooseOnMap">My Location</string>
-    <string name="AskQuNum">Track Number</string>
-    <string name="please_enter_name">Please enter your name to proceed</string>
-    <string name="please_select_type">Please select a type to proceed</string>
-    <string name="please_select_difficulty">Please select a filter trancit agency</string>
-    <string name="QuestionTexts">qutext</string>
-    <string name="question_label">Route</string>
-    <string name="snackbar_message">Would you like to see the info about Routs</string>
-    <string name="delete_title">Delete this?</string>
-    <string name="delete_message">Are you sure you want to delete this route</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="help_message">Write your name and select your curren location  and the difficulty level for the route, press contact button on this screen.</string>
-    type
-    <string name="help">help</string>
-    <string name="close">Close</string>
-    <string name="open">Open</string>
-    <string name="made_by_Setareh">made_by_Setareh</string>
-    <string name="Choose_On_Map">Choose your option</string>
-    <string name="FinishButton">Finish</string>
 </resources>
