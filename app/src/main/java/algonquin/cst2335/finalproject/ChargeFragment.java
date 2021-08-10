@@ -245,7 +245,12 @@ public class ChargeFragment extends Fragment {
 
             info_title = itemView.findViewById(R.id.info_title);
         }
-    public void setPosition(int p) {
+
+        private int getAbsoluteAdapterPosition() {
+            return getAbsoluteAdapterPosition();
+        }
+
+        public void setPosition(int p) {
         position = p;
     }
 }
