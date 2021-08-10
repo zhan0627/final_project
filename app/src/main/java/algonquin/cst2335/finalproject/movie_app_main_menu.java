@@ -40,7 +40,7 @@ import java.net.URLEncoder;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-public class ThirdActivity extends AppCompatActivity {
+public class movie_app_main_menu extends AppCompatActivity {
     ImageView iv ;
     /**Describes the result the variable movie holds */
     private EditText movie;
@@ -71,7 +71,7 @@ public class ThirdActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId())
         {
-          //  case R.id.views:
+            //  case R.id.views:
             case R.id.nav_views:
                 isVisible = ! isVisible;
                 // forecastBtn.setVisibility(isVisible?View.VISIBLE:View.INVISIBLE);
@@ -94,7 +94,7 @@ public class ThirdActivity extends AppCompatActivity {
                 movie.setText("");
                 break;
 
-           // case R.id.increase:
+            // case R.id.increase:
             case R.id.nav_increase:
                 txtSize++;
                 TextView text = findViewById(R.id.movie_title);
@@ -115,7 +115,7 @@ public class ThirdActivity extends AppCompatActivity {
 
                 break;
 
-          //  case R.id.decrease:
+            //  case R.id.decrease:
             case R.id.nav_decrease:
                 txtSize = Float.max(txtSize-1, 5);
                 TextView tV = findViewById(R.id.movie_title);
@@ -207,10 +207,10 @@ public class ThirdActivity extends AppCompatActivity {
         forecastBtn.setOnClickListener((click)-> {
             String movietime = movie.getText().toString();
 
-            AlertDialog dialog = new AlertDialog.Builder (ThirdActivity.this)
+            AlertDialog dialog = new AlertDialog.Builder (movie_app_main_menu.this)
                     .setTitle ("Box Office Hit")
                     .setMessage("173 Million views:" + movietime )
-                    .setView (new ProgressBar(ThirdActivity.this))
+                    .setView (new ProgressBar(movie_app_main_menu.this))
                     .show();
 
         });
@@ -248,18 +248,18 @@ public class ThirdActivity extends AppCompatActivity {
                         case XmlPullParser.START_TAG:
                             if (xpp.getName().equals("Movie"))
                             {
-                               title = xpp.getAttributeValue(null, "title");
-                               runtime = xpp.getAttributeValue(null, "runtime");
-                               actors = xpp.getAttributeValue(null, "actors");
-                               plot = xpp.getAttributeValue(null, "plot");
-                               ratings = xpp.getAttributeValue(null, "rated");
+                                title = xpp.getAttributeValue(null, "title");
+                                runtime = xpp.getAttributeValue(null, "runtime");
+                                actors = xpp.getAttributeValue(null, "actors");
+                                plot = xpp.getAttributeValue(null, "plot");
+                                ratings = xpp.getAttributeValue(null, "rated");
                             }
 
                             break;
-                            case XmlPullParser.END_TAG:
-                                break;
-                                case XmlPullParser.TEXT:
-                                    break;
+                        case XmlPullParser.END_TAG:
+                            break;
+                        case XmlPullParser.TEXT:
+                            break;
                     }
                 }
 
