@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="algonquin.cst2335.finalproject">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:icon="@drawable/app"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject">
+        <activity android:name=".MyLocation"></activity>
+        <activity android:name=".MainRoute" />
+        <activity android:name=".HighScoreActivity" />
+        <activity android:name=".RouteEmptyActivity" />
+        <activity android:name=".RouteInformation" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,10 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <activity android:name=".soccer.SoccerActivity"/>-->
-<!--        <activity android:name=".soccer.SecondActivity"/>-->
-        <activity android:name=".soccer.GoalRssActivity"/>
-        <activity android:name=".soccer.SoccerActivity"/>
     </application>
 
 </manifest>
