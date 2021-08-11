@@ -24,16 +24,32 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
 
-        Button loginBtn = findViewById(R.id.button5);
-        Log.w("MainActivity", "In onCreate() - Loading Widgets" );
+        Button searchBtn = findViewById(R.id.button5);
+        Log.w("Menu", "In onCreate() - Loading Widgets" );
 
-        loginBtn.setOnClickListener( clk -> {
+        searchBtn.setOnClickListener( clk -> {
             et = findViewById(R.id.inputEditText);
             Intent nextPage = new Intent(Menu.this, movie_app_main_menu.class);
 
-            nextPage.putExtra("EmailAddress", et.getText().toString());
+            nextPage.putExtra("search", et.getText().toString());
 
             startActivityForResult(nextPage, 800);
+        });
+
+        Intent fromPrevious = getIntent();
+        EditText line = findViewById(R.id.editTextPhone);
+        String email = fromPrevious.getStringExtra("search");
+        line.setText(email);
+
+        Button btn = findViewById(R.id.button5);
+        Log.w("Menu", "In onCreate() - Loading Widgets" );
+
+        btn.setOnClickListener( clk -> {
+            Intent sendBack = new Intent ();
+            sendBack.putExtra("Number", line.getText().toString());
+            setResult(200, sendBack);
+
+            finish();
         });
 
 

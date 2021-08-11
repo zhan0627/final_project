@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Jace\'s Android Labs</string>
+    <string name="hello_message" translatable="false">f</string>
+    <string name="hello_message" translatable="false">Bonjour tout le monde!</string>
+    <string name="hello_message" translatable="false">Bonjour tout le monde!</string>
+    <string name="button_message">Je suis un bouton</string>
+    <string name="button_message">Je suis un bouton</string>
+    <string name="button_message">Je suis un bouton</string>
+    <string name="hello_message" translatable="false">Bonjour tout le monde!</string>
+    <string name="hello_message" translatable="false">Bonjour tout le monde!</string>
+    <string name="hello_message" translatable="false">Bonjour tout le monde!</string>
+    <string name="hello_message" translatable="false">Bonjour tout le monde!</string>
+    <string name="hello_message" translatable="false">Bonjour tout le monde!</string>
+    <string name="hello_message" translatable="false">Bonjour tout le monde!</string>
+    <string name="hello_message" translatable="false">Bonjour tout le monde!</string>
+    <string name="hello_message" translatable="false">Bonjour tout le monde!</string>
+    <string name="hello_message" translatable="false">Bonjour tout le monde!</string>
 </resources>
