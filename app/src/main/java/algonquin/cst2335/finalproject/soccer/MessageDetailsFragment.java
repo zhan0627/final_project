@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.squareup.picasso.Picasso;
+
 
 import algonquin.cst2335.finalproject.R;
 
@@ -51,9 +51,6 @@ public class MessageDetailsFragment extends Fragment {
         timeView.setText( getString(R.string.time)+ choosenItem.getPubDate());
         idView.setText("Database id is: " + choosenItem.getId());
 
-        Picasso.get()
-        .load(choosenItem.getImageUrl())
-        .into(imageView);
 
 
         Button webButton = detailsView.findViewById(R.id.webButton);
