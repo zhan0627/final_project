@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject">
-        <activity android:name=".ThirdActivity">
+        <activity android:name=".movie_app_main_menu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

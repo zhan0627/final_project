@@ -310,7 +310,7 @@ public class movie_app_main_menu extends AppCompatActivity {
 
         loginBtn.setOnClickListener( clk -> {
 
-            Intent nextPage = new Intent(movie_app_main_menu.this, algonquin.cst2335.finalproject.ChatRoom.class);
+            Intent nextPage = new Intent(movie_app_main_menu.this, algonquin.cst2335.finalproject.MainMenu.class);
 
             nextPage.putExtra("textEmailAddress", movie.getText().toString());
 
