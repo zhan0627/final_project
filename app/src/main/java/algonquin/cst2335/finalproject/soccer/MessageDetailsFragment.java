@@ -51,6 +51,9 @@ public class MessageDetailsFragment extends Fragment {
         timeView.setText( getString(R.string.time)+ choosenItem.getPubDate());
         idView.setText("Database id is: " + choosenItem.getId());
 
+        //Picasso.get()
+        //        .load(choosenItem.getImageUrl())
+        //        .into(imageView);
 
 
         Button webButton = detailsView.findViewById(R.id.webButton);
